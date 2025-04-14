@@ -1,36 +1,34 @@
-import React, {useState} from "react";
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
-import {Card, CardContent} from "@/components/ui/card";
+import React, { useState } from "react";
 
-const ExpenseForm = ({onAddExpense}) => {
-    const [formData, setFormData] = useState({
-        name: "",
-        description: "",
-        category: "",
-        amount: "",
-        date: "",
-    });
+const ExpenseForm = ({ onAddExpense }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    category: "",
+    amount: "",
+    date: "",
+  });
 
-    const handleChange = (e) => {
-        e.preventDefault();
-        onAddExpense(formData);
-        setFormData({name:"", description:"", category:"", amount:"", date:""});
-    };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    return (
-        <Card>
-            <CardContent className="space-y-4 p-4">
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddExpense(formData);
+    setFormData({ name: "", description: "", category: "", amount: "", date: "" });
+  };
+
+  return (
     <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-        <Input name="name" placeholder="Expense Name" value={formData.name} onChange={handleChange} required />
-        <Input name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
-        <Input name="category" placeholder="Category" value={formData.category} onChange={handleChange} required />
-        <Input name="amount" type="number" placeholder="Amount" value={formData.amount} onChange={handleChange} required />
-        <Input name="date" type="date" value={formData.date} onChange={handleChange} required />
-        <Button type="submit" className="col-span-2">Add Expense</Button>       
+      <input name="name" placeholder="Expense Name" value={formData.name} onChange={handleChange} required className="border p-2" />
+      <input name="description" placeholder="Description" value={formData.description} onChange={handleChange} required className="border p-2" />
+      <input name="category" placeholder="Category" value={formData.category} onChange={handleChange} required className="border p-2" />
+      <input name="amount" type="number" placeholder="Amount" value={formData.amount} onChange={handleChange} required className="border p-2" />
+      <input name="date" type="date" value={formData.date} onChange={handleChange} required className="border p-2" />
+      <button type="submit" className="col-span-2 bg-blue-600 text-white py-2 rounded">Add Expense</button>
     </form>
-            </CardContent>
-        </Card>
-    );
+  );
 };
+
 export default ExpenseForm;
