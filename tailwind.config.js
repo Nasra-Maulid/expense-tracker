@@ -1,9 +1,0 @@
-// tailwind.config.js
-module.exports = {
-    content: ["./src/**/*.{html,js}"], // Adjust to your project structure
-    theme: {
-      extend: {},
-    },
-    plugins: [],
-  };
-  
