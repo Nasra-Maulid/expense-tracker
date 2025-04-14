@@ -30,12 +30,13 @@ const App = () => {
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold text-center">Expense Tracker</h1>
-      <ExpenseForm onAddExpense={handleAddExpense} />
-      <SearchAndSort setSearch={setSearch} setSortBy={setSortBy} />
-      <ExpenseTable expenses={sortedExpenses} onDelete={handleDelete} />
-    </div>
+    <h1 className="text-2xl font-bold text-center">Expense Tracker</h1>
+    <ExpenseForm onAddExpense={handleAddExpense} />
+    <SearchAndSort setSearch={setSearch} setSortBy={setSortBy} />
+    <ExpenseTable expenses={sortedExpenses} onDelete={handleDelete} />
+  </div>
   );
+  
 };
 
 export default App;
